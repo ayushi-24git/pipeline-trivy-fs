@@ -1,10 +1,10 @@
 apiVersion: tekton.dev/v1alpha1
 kind: Pipeline
 metadata:
-  name: samplepl
+  name: scan-pipeline-fs
 spec:
   params:
-    - name: path-scan
+    - name: fs-scan
 
     
   workspaces:
@@ -12,15 +12,15 @@ spec:
 
   tasks:
       
-  - name: scan-image
+  - name: scan-fs
     
     taskRef:
-      name: scan-image
+      name: scan-fs
     workspaces: 
       - name: source
         workspace: workspace
     params:
-      - name: path-scan
+      - name: fs-scan
         value: $(params.path-scan)
     
 
