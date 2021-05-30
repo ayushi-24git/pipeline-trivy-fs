@@ -1,0 +1,31 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: samplepl
+spec:
+  params:
+    - name: path-scan
+
+    
+  workspaces:
+  - name: workspace
+
+  tasks:
+      
+  - name: scan-image
+    
+    taskRef:
+      name: scan-image
+    workspaces: 
+      - name: source
+        workspace: workspace
+    params:
+      - name: path-scan
+        value: $(params.path-scan)
+    
+
+
+  
+  
+   
+      
