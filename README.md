@@ -5,8 +5,7 @@ Pipeline-trivy
 </h1>
 This repository demonstrates Trivy, a vulnerability management tool for images and containers. It uses Tekton pipeline under the hood.  
 
-
-The repo contains two tasks. Vulnerable-image pulls a sample image from Dockerhub, which is vulnerable. Task scan-image scans that pulled image through Trivy tool.
+The repo contains a single task, scan-fs, which scans the given folder on your local through Trivy tool. Since Trivy can only scan repositories with lock files, if your filesystem contains any kind of lock files, you can straightway **cd** inside the folder and do `trivy fs .`. Otherwise, you can first generate a lock file and then  scan the repo. Here, I have tried to generate Pipfile.lock file for my Python project on local and then scanned it for vulnerabilities.
 
 If you have **minikube** on your laptop, do a `minikube start` and run the following commands:
 
@@ -26,5 +25,5 @@ If you have **minikube** on your laptop, do a `minikube start` and run the follo
   
   `kubectl apply -f https://raw.githubusercontent.com/ayushi-24git/pipeline-trivy/main/pipelinerun.yaml`  
   
-After applying the above, you can start the Tekton pipeline by running `tkn pipeline start foo`, where foo is the name of your pipeline.
+After applying the above, you can start the Tekton pipeline by running `tkn pipeline start scan-pipeline-fs`. After this, the pipeline starts and you will be prompted to enter the directory of the folder you want to scan. Check for the logs and you can see the table of all vulnerabilities detected by Trivy.
   
