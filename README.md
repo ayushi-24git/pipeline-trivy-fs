@@ -5,7 +5,7 @@ Pipeline-trivy
 </h1>
 This repository demonstrates Trivy, a vulnerability management tool for images and containers. It uses Tekton pipeline under the hood.  
 
-The repo contains a single task, scan-fs, which scans the given folder on your local through Trivy tool. Since Trivy can only scan repositories with lock files, if your filesystem contains any kind of lock files, you can straightway **cd** inside the folder and do `trivy fs .`. Otherwise, you can first generate a lock file and then  scan the repo. Here, I have tried to generate Pipfile.lock file for my Python project on local and then scanned it for vulnerabilities.
+The repo contains a single task, scan-fs, which scans the given folder on your local through Trivy tool. Since Trivy can only scan repositories with lock files, if your filesystem contains any kind of lock files, you can straightway **cd** inside the folder and do `trivy fs .`. Otherwise, you can first generate a lock file and then  scan the repo. Here, I have tried to generate Pipfile.lock file for my Python project on local and then scanned it for vulnerabilities. For support of other languages, you can take a look [here](https://aquasecurity.github.io/trivy/v0.18.3/vuln-detection/library/).
 
 If you have **minikube** on your laptop, do a `minikube start` and run the following commands:
 
