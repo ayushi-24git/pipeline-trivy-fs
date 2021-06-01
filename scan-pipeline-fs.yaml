@@ -7,21 +7,16 @@ spec:
     - name: fs-scan
 
     
-  workspaces:
-  - name: workspace
-
   tasks:
       
   - name: scan-fs
     
     taskRef:
       name: scan-fs
-    workspaces: 
-      - name: source
-        workspace: workspace
+   
     params:
       - name: fs-scan
-        value: $(params.path-scan)
+        value: $(params.fs-scan)
     
 
 
