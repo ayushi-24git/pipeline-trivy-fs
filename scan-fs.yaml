@@ -8,10 +8,7 @@ metadata:
 spec:
   description: This task is for scanning the file system.
 
-  workspaces:
-    - name: source
-      description: Workspace for fetched image.
-
+  
   params:
     - name: fs-scan
       type: string
@@ -21,10 +18,14 @@ spec:
   steps:
     - name: scan-fs-step
       image: aquasec/trivy:0.16.0
-      workingDir: $(workspaces.source.path)
+      
       script:  |
-        echo "1"
-        python3 demo.py
-        echo "2"
+        cd ~
+        echo pwd
+        cd $(params.fs-scan)
+        pip freeze > requirements.txt
+        pipenv lock
         trivy fs .
-        echo "3"    
+           
+
+        
