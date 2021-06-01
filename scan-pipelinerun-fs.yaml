@@ -6,13 +6,8 @@ spec:
   pipelineRef:
     name: scan-pipeline-fs
   
-  workspaces:
-  - name: workspace
-    persistentvolumeclaim:
-      claimName: trivypvc
-
   params:
   
   - name: fs-scan
-    value: Downloads/FaceTroop  
+    value: ""  
   
