@@ -20,9 +20,7 @@ spec:
       image: aquasec/trivy:0.16.0
       
       script:  |
-        cd ~
-        echo pwd
-        cd $(params.fs-scan)
+       
         pip freeze > requirements.txt
         pipenv lock
         trivy fs .
