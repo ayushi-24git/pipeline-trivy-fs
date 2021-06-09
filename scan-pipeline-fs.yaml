@@ -5,22 +5,18 @@ metadata:
 spec:
   params:
     - name: fs-scan
-
-    
+  workspaces:
+    - name: input
+      
   tasks:
       
   - name: scan-fs
     
     taskRef:
       name: scan-fs
-   
+    workspaces:
+      - name: input
+        workspace: input
     params:
       - name: fs-scan
         value: $(params.fs-scan)
-    
-
-
-  
-  
-   
-      
