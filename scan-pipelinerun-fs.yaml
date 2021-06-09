@@ -6,6 +6,10 @@ spec:
   pipelineRef:
     name: scan-pipeline-fs
   
+  workspaces:
+    - name: input
+      persistentvolumeclaim:
+        claimName: trivy-pvc
   params:
   
   - name: fs-scan
