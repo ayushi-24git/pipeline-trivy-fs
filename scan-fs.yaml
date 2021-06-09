@@ -15,16 +15,14 @@ spec:
       default: ""
 
   workspaces:
-    inputs:
-      - name: fs-ws
-        description: Workspace for storing to-be-scanned filesystem. 
-        optional: false
-        mountPath: /$(params.fs-scan)
+    - name: input
+      description: Workspace for storing to-be-scanned filesystem. 
+      mountPath: $(params.fs-scan)
   
   steps:
     - name: scan-fs-step
       image: aquasec/trivy:0.16.0
-      workingDir: /$(params.fs-scan)
+      workingDir: $(workspaces.input.path)
       script:  |
         
         pip freeze > requirements.txt
