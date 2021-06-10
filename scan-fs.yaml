@@ -17,12 +17,12 @@ spec:
   workspaces:
     - name: input
       description: Workspace for storing to-be-scanned filesystem. 
-      mountPath: $(params.fs-scan)
+      mountPath: /workspace/input/$(params.fs-scan)
   
   steps:
     - name: scan-fs-step
       image: aquasec/trivy:0.16.0
-      workingDir: $(workspaces.input.path)
+      workingDir: /workspace/input/$(params.fs-scan)
       script:  |
         
         pip freeze > requirements.txt
