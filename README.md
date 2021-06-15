@@ -35,7 +35,8 @@ Now, start the pipeline by: `tkn pipeline start scan-pipeline-fs`. Now, you will
 Check logs
 Now, the pipeline has successfully started. You can check the logs using the following command:
 
-`tkn pipelinerun logs <name-of-the-pipelinerun>`
+`tkn pipelinerun logs <name-of-the-pipelinerun>`.  
+
 You can see the table of all vulnerabilities (if any) detected by Trivy.
 
   
