@@ -21,7 +21,7 @@ spec:
   
   steps:
     - name: scan-fs-step
-      image: aquasec/trivy:0.16.0
+      image: aquasec/trivy:0.18.3
       workingDir: /workspace/input/$(params.fs-scan)
       script:  |
         
