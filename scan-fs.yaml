@@ -7,32 +7,25 @@ metadata:
 
 spec:
   description: This task is for scanning the file system.
-  
+
+  workspaces:
+    - name: source
+      description: A workspace that contains fetched filesystem.
   params:
     - name: fs-scan
       type: string
       description: Absolute path of the filesystem to be scanned.
       default: ""
 
-  workspaces:
-    - name: input
-      description: Workspace for storing to-be-scanned filesystem. 
-      mountPath: /workspace/input/$(params.fs-scan)
-  
   steps:
     - name: scan-fs-step
-      image: aquasec/trivy:0.18.3
-      workingDir: /workspace/input/$(params.fs-scan)
+      image: aquasec/trivy:0.16.0
+      workingDir: $(workspaces.source.path)
       script:  |
         
         pip freeze > requirements.txt
         pipenv lock
         trivy fs .
-
-
-
-      
-      
            
 
         
