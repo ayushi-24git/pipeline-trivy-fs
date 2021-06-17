@@ -5,11 +5,11 @@ metadata:
 spec:
   pipelineRef:
     name: scan-pipeline-fs
-  
   workspaces:
-    - name: input
+    - name: workspace
       persistentvolumeclaim:
         claimName: trivy-pvc
+  
   params:
   
   - name: fs-scan
